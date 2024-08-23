@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import { GlobalStyles } from "./components/GlobalStyles";
 import { sendGuess, startGame } from "./api";
+import FormGuess from "./components/FormGuess/FormGuess";
 
 let tg = window.Telegram.WebApp;
 tg.expand();
@@ -19,9 +20,7 @@ const newGame = async () => {
 function App() {
   const [message, setMessage] = useState("Start");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const guessNumber = e.target.guessNumber.value;
+  const handleSubmit = async (guessNumber) => {
     const res = await sendGuess({
       guessNumber: guessNumber,
       gameId: tg.initDataUnsafe.user.id,
@@ -39,12 +38,8 @@ function App() {
       {message === "You win" ? (
         <button onClick={newGame}>New Game</button>
       ) : (
-        <form onSubmit={handleSubmit}>
-          <input name="guessNumber" type="number" placeholder="Enter number" />
-          <button type="submit">Submit</button>
-        </form>
+        <FormGuess onSubmit={handleSubmit} />
       )}
-
       <GlobalStyles />
     </>
   );
