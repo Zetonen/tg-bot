@@ -5,49 +5,45 @@ import { sendGuess, startGame } from "./api";
 
 let tg = window.Telegram.WebApp;
 tg.expand();
+
+const newGame = async () => {
+  try {
+    const res = await startGame({
+      gameId: tg.initDataUnsafe.user.id,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 function App() {
-  const [count, setCount] = useState(0);
   const [message, setMessage] = useState("Start");
-  console.dir(tg);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const guessNumber = e.target.guessNumber.value;
+    const res = await sendGuess({
+      guessNumber: guessNumber,
+      gameId: tg.initDataUnsafe.user.id,
+    });
+    setMessage(res.message);
+  };
+
   useEffect(() => {
     tg.ready();
-    const fn = async () => {
-      try {
-        const res = await startGame({
-          gameId: tg.initDataUnsafe.user.id,
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fn();
+    newGame();
   }, []);
-  useEffect(() => {
-    const fn = async () => {
-      try {
-        const res = await sendGuess({
-          guessNumber: count,
-          gameId: tg.initDataUnsafe.user.id,
-        });
-        setMessage(res.message);
-        alert(res.message);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fn();
-  }, [count]);
   return (
     <>
       <h1>{message}</h1>
-      <div className="card">
-        <button
-          style={{ color: "var(--tg-theme-bg-color)" }}
-          onClick={() => setCount((count) => count + 1)}
-        >
-          count is {count}
-        </button>
-      </div>
+      {message === "You win" ? (
+        <button onClick={newGame}>New Game</button>
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <input name="guessNumber" type="number" placeholder="Enter number" />
+          <button type="submit">Submit</button>
+        </form>
+      )}
 
       <GlobalStyles />
     </>
