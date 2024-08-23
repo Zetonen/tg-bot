@@ -11,13 +11,11 @@ function App() {
 
   console.dir(tg);
   useEffect(() => {
-    sendGuess(25, tg);
     const fn = async () => {
-      const res = await sendGuess(15, tg);
-      console.log(res);
+      const res = await sendGuess(count, tg);
     };
     fn();
-  });
+  },[count, tg]);
   return (
     <>
       <div>
