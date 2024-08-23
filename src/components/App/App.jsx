@@ -9,7 +9,7 @@ let tg = window.Telegram.WebApp;
 tg.expand();
 
 function App() {
-  const [message, setMessage] = useState("Game started");
+  const [message, setMessage] = useState("Початок гри");
   const [loading, setLoading] = useState(false);
   const newGame = async () => {
     try {
@@ -49,8 +49,8 @@ function App() {
   return (
     <Wrap>
       <Title>{message}</Title>
-      {message === "You win" ? (
-        <Btn onClick={newGame}>New Game {loading && <Loader />}</Btn>
+      {message === "Число вгадано" ? (
+        <Btn onClick={newGame}>Нова гра {loading && <Loader />}</Btn>
       ) : (
         <FormGuess onSubmit={handleSubmit} loading={loading} />
       )}
