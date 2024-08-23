@@ -10,7 +10,6 @@ const schema = Yup.object().shape({
   });
 const FormGuess = ({ onSubmit, loading }) => {
   const handleGuessSubmit = async ({guessNumber}) => {
-    alert(guessNumber);
     await onSubmit(guessNumber);
   };
   return (
