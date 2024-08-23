@@ -8,17 +8,17 @@ const schema = Yup.object().shape({
       .required("This field is required"),
   });
 const FormGuess = ({ onSubmit }) => {
-  const handleGuessSubmit = (e) => {
+  const handleGuessSubmit = async (e) => {
     e.preventDefault();
     const guessNumber = e.target.guessNumber.value;
-    alert(guessNumber);
-    onSubmit(guessNumber);
+    await onSubmit(guessNumber);
   };
   return (
     <Formik
       initialValues={{ guessNumber: 1 }}
-      onSubmit={(values) => {
-        handleGuessSubmit(values);
+      onSubmit={async (values) => {
+        alert(values.guessNumber);
+        await handleGuessSubmit(values);
       }}
       validationSchema={schema}
     >
