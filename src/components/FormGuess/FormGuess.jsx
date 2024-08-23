@@ -11,13 +11,14 @@ const FormGuess = ({ onSubmit }) => {
   const handleGuessSubmit = async (e) => {
     e.preventDefault();
     const guessNumber = e.target.guessNumber.value;
+    alert(guessNumber);
     await onSubmit(guessNumber);
   };
   return (
     <Formik
       initialValues={{ guessNumber: 1 }}
       onSubmit={async (values) => {
-        alert(values.guessNumber);
+        // alert(values.guessNumber);
         await handleGuessSubmit(values);
       }}
       validationSchema={schema}
