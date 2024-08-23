@@ -9,7 +9,7 @@ tg.expand();
 
 function App() {
   const [message, setMessage] = useState("Game started");
-
+  const [loading, setLoading] = useState(false);
   const newGame = async () => {
     try {
       const res = await startGame({
@@ -20,13 +20,21 @@ function App() {
       console.log(error);
     }
   };
-  
+
   const handleSubmit = async (guessNumber) => {
-    const res = await sendGuess({
-      guessNumber: guessNumber,
-      gameId: tg.initDataUnsafe.user.id,
-    });
-    setMessage(res.message);
+    try {
+      setLoading(true);
+      const res = await sendGuess({
+        guessNumber: guessNumber,
+        gameId: tg.initDataUnsafe.user.id,
+      });
+      setMessage(res.message);
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -39,7 +47,7 @@ function App() {
       {message === "You win" ? (
         <Btn onClick={newGame}>New Game</Btn>
       ) : (
-        <FormGuess onSubmit={handleSubmit} />
+        <FormGuess onSubmit={handleSubmit} loading={loading}/>
       )}
       <GlobalStyles />
     </Wrap>

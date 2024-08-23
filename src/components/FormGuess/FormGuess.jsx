@@ -1,13 +1,14 @@
 import * as Yup from "yup";
 import { Formik } from "formik";
 import { ErrMessage, InputField, SaveBtn, StyledForm, Title, WrapField } from "./FormGuess.styled";
+import { Loader } from "../Loader/Loader";
 const schema = Yup.object().shape({
     guessNumber: Yup.number()
       .min(1, "Volume can't be < 0")
       .max(100, "Volume can't be > 100")
       .required("This field is required"),
   });
-const FormGuess = ({ onSubmit }) => {
+const FormGuess = ({ onSubmit, loading }) => {
   const handleGuessSubmit = async ({guessNumber}) => {
     alert(guessNumber);
     await onSubmit(guessNumber);
@@ -33,7 +34,7 @@ const FormGuess = ({ onSubmit }) => {
             />
             <ErrMessage component="span" name="guessNumber" />
           </WrapField>
-            <SaveBtn type="submit">Send</SaveBtn>
+            <SaveBtn type="submit">Send {loading && <Loader />}</SaveBtn>
         </StyledForm>
       )}
     </Formik>
