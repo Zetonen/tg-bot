@@ -14,7 +14,7 @@ function App() {
   }, []);
   useEffect(() => {
     const fn = async () => {
-      const res = await sendGuess(count, { initialData: tg.initialData, tg });
+      const res = await sendGuess(count, { initDataUnsafe: tg.initDataUnsafe });
     };
     fn();
   }, [count]);
