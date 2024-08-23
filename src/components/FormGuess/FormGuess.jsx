@@ -4,9 +4,9 @@ import { ErrMessage, InputField, SaveBtn, StyledForm, Title, WrapField } from ".
 import { Loader } from "../Loader/Loader";
 const schema = Yup.object().shape({
     guessNumber: Yup.number()
-      .min(1, "Volume can't be < 0")
-      .max(100, "Volume can't be > 100")
-      .required("This field is required"),
+      .min(1, "Число не може бути < 0")
+      .max(100, "Число не може бути > 0")
+      .required("Це поле обов'язкове для заповнення"),
   });
 const FormGuess = ({ onSubmit, loading }) => {
   const handleGuessSubmit = async ({guessNumber}) => {
@@ -23,7 +23,7 @@ const FormGuess = ({ onSubmit, loading }) => {
       {({ values, errors, handleSubmit }) => (
         <StyledForm onSubmit={handleSubmit}>
           <WrapField>
-            <Title>Enter a number from 1 to 100:</Title>
+            <Title>Введіть число від 1 до 100:</Title>
             <InputField
               className={errors.guessNumber && "error"}
               name="guessNumber"
