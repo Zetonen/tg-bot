@@ -29,4 +29,5 @@ export const Btn = styled.button`
   font-weight: 500;
   line-height: 1.25;
   width: 100%;
+  color: var(--tg-theme-secondary-bg-color);
 `;
