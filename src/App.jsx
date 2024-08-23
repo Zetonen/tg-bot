@@ -5,9 +5,10 @@ import "./App.css";
 import { GlobalStyles } from "./components/GlobalStyles";
 import { sendGuess } from "./api";
 
+let tg = window.Telegram.WebApp;
+tg.expand();
 function App() {
   const [count, setCount] = useState(0);
-  let tg = window.Telegram.WebApp;
 
   console.dir(tg);
   useEffect(() => {
@@ -15,7 +16,7 @@ function App() {
       const res = await sendGuess(count, tg);
     };
     fn();
-  },[count, tg]);
+  }, [count]);
   return (
     <>
       <div>
