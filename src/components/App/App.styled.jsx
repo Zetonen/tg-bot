@@ -5,7 +5,7 @@ export const Wrap = styled.div`
     align-items: center;
     height: 100vh;
     width: 100vw;
-    padding-top: 50px;
+    padding: 50px 20px 0;
     background-color: var(--tg-theme-secondary-bg-color);
     color: var(--tg-theme-text-color);
 `;

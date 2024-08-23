@@ -7,19 +7,20 @@ import { Btn, Title, Wrap } from "./App.styled";
 let tg = window.Telegram.WebApp;
 tg.expand();
 
-const newGame = async () => {
-  try {
-    const res = await startGame({
-      gameId: tg.initDataUnsafe.user.id,
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 function App() {
-  const [message, setMessage] = useState("Start");
+  const [message, setMessage] = useState("Game started");
 
+  const newGame = async () => {
+    try {
+      const res = await startGame({
+        gameId: tg.initDataUnsafe.user.id,
+      });
+      setMessage(res.message);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
   const handleSubmit = async (guessNumber) => {
     const res = await sendGuess({
       guessNumber: guessNumber,

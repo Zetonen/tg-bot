@@ -3,8 +3,8 @@ import { Formik } from "formik";
 import { ErrMessage, InputField, SaveBtn, StyledForm, Title, WrapField } from "./FormGuess.styled";
 const schema = Yup.object().shape({
     guessNumber: Yup.number()
-      .min(1, "Volume can't be 0")
-      .max(100, "The maximum value for water is 5000 ml")
+      .min(1, "Volume can't be < 0")
+      .max(100, "Volume can't be > 100")
       .required("This field is required"),
   });
 const FormGuess = ({ onSubmit }) => {
@@ -16,7 +16,6 @@ const FormGuess = ({ onSubmit }) => {
     <Formik
       initialValues={{ guessNumber: 1 }}
       onSubmit={async (values) => {
-        // alert(values.guessNumber);
         await handleGuessSubmit(values);
       }}
       validationSchema={schema}
