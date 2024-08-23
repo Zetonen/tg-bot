@@ -24,7 +24,7 @@ const FormGuess = ({ onSubmit }) => {
       {({ values, errors, handleSubmit }) => (
         <StyledForm onSubmit={handleSubmit}>
           <div>
-            <Title>Enter the value of the water used:</Title>
+            <Title>Enter a number from 1 to 100:</Title>
             <InputField
               className={errors.guessNumber && "error"}
               name="guessNumber"
@@ -34,7 +34,7 @@ const FormGuess = ({ onSubmit }) => {
             />
             <ErrMessage component="span" name="guessNumber" />
           </div>
-            <SaveBtn type="submit">Save</SaveBtn>
+            <button type="submit">Send</button>
         </StyledForm>
       )}
     </Formik>

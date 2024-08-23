@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { colors } from "../constants/colors";
 
 export const Title = styled.h2`
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 500;
   line-height: 1.23;
 `;
@@ -14,21 +14,20 @@ export const StyledForm = styled(Form)`
 `;
 export const InputField = styled(Field)`
   padding: 12px 10px;
-  position: relative;
   margin-top: 8px;
   border-radius: 6px;
-  border: 1px solid ${colors.PROVINCIAL_PINK};
   font-size: 16px;
   font-weight: 400;
   line-height: 1.25;
-  width: 120px;
-  color: ${colors.BLUE};
+  width: 150px;
+  text-align: center;
   &.error {
     border: 1px solid ${colors.RED};
     color: ${colors.RED};
   }
-  @media (min-width: 768px) {
-    width: 100%;
+  [type="number"]::-webkit-inner-spin-button,
+  [type="number"]::-webkit-outer-spin-button {
+    display: none;
   }
 `;
 export const ErrMessage = styled(ErrorMessage)`
