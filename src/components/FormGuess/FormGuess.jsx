@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 import { Formik } from "formik";
-import { ErrMessage, InputField, SaveBtn, StyledForm, Title } from "./FormGuess.styled";
+import { ErrMessage, InputField, SaveBtn, StyledForm, Title, WrapField } from "./FormGuess.styled";
 const schema = Yup.object().shape({
     guessNumber: Yup.number()
       .min(1, "Volume can't be 0")
@@ -23,7 +23,7 @@ const FormGuess = ({ onSubmit }) => {
     >
       {({ values, errors, handleSubmit }) => (
         <StyledForm onSubmit={handleSubmit}>
-          <div>
+          <WrapField>
             <Title>Enter a number from 1 to 100:</Title>
             <InputField
               className={errors.guessNumber && "error"}
@@ -33,7 +33,7 @@ const FormGuess = ({ onSubmit }) => {
               value={values.guessNumber}
             />
             <ErrMessage component="span" name="guessNumber" />
-          </div>
+          </WrapField>
             <SaveBtn type="submit">Send</SaveBtn>
         </StyledForm>
       )}

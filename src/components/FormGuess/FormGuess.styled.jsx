@@ -12,9 +12,17 @@ export const StyledForm = styled(Form)`
   flex-direction: column;
   gap: 24px;
 `;
+export const WrapField = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+`;
+
 export const InputField = styled(Field)`
   padding: 12px 10px;
-  margin-top: 8px;
   border-radius: 6px;
   font-size: 16px;
   font-weight: 400;

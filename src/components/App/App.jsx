@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import "./App.css";
-import { GlobalStyles } from "./components/GlobalStyles";
-import { sendGuess, startGame } from "./api";
-import FormGuess from "./components/FormGuess/FormGuess";
+import { GlobalStyles } from "../GlobalStyles";
+import { sendGuess, startGame } from "../../api";
+import FormGuess from "../FormGuess/FormGuess";
+import { Btn, Title, Wrap } from "./App.styled";
 
 let tg = window.Telegram.WebApp;
 tg.expand();
@@ -33,15 +33,15 @@ function App() {
     newGame();
   }, []);
   return (
-    <>
-      <h1>{message}</h1>
+    <Wrap>
+      <Title>{message}</Title>
       {message === "You win" ? (
-        <button onClick={newGame}>New Game</button>
+        <Btn onClick={newGame}>New Game</Btn>
       ) : (
         <FormGuess onSubmit={handleSubmit} />
       )}
       <GlobalStyles />
-    </>
+    </Wrap>
   );
 }
 
