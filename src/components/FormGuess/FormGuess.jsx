@@ -11,6 +11,7 @@ const FormGuess = ({ onSubmit }) => {
   const handleGuessSubmit = (e) => {
     e.preventDefault();
     const guessNumber = e.target.guessNumber.value;
+    alert(guessNumber);
     onSubmit(guessNumber);
   };
   return (
