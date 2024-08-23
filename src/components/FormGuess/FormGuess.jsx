@@ -34,7 +34,7 @@ const FormGuess = ({ onSubmit }) => {
             />
             <ErrMessage component="span" name="guessNumber" />
           </div>
-            <button type="submit">Send</button>
+            <SaveBtn type="submit">Send</SaveBtn>
         </StyledForm>
       )}
     </Formik>

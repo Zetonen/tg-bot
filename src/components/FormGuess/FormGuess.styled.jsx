@@ -25,9 +25,11 @@ export const InputField = styled(Field)`
     border: 1px solid ${colors.RED};
     color: ${colors.RED};
   }
-  [type="number"]::-webkit-inner-spin-button,
-  [type="number"]::-webkit-outer-spin-button {
+  &[type="number"]::-webkit-inner-spin-button,
+  &[type="number"]::-webkit-outer-spin-button {
     display: none;
+    -webkit-appearance: none;
+    margin: 0;
   }
 `;
 export const ErrMessage = styled(ErrorMessage)`
