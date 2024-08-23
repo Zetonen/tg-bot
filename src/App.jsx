@@ -14,7 +14,10 @@ function App() {
   }, []);
   useEffect(() => {
     const fn = async () => {
-      const res = await sendGuess(count, tg.initDataUnsafe );
+      const res = await sendGuess({
+        guessNumber: count,
+        gameId: tg.initDataUnsafe.user.id,
+      });
     };
     fn();
   }, [count]);
