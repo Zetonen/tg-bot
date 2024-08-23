@@ -8,9 +8,7 @@ const schema = Yup.object().shape({
       .required("This field is required"),
   });
 const FormGuess = ({ onSubmit }) => {
-  const handleGuessSubmit = async (e) => {
-    e.preventDefault();
-    const guessNumber = e.target.guessNumber.value;
+  const handleGuessSubmit = async ({guessNumber}) => {
     alert(guessNumber);
     await onSubmit(guessNumber);
   };
