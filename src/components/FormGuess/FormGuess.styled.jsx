@@ -18,7 +18,6 @@ export const WrapField = styled.div`
   align-items: center;
   justify-content: center;
   gap: 8px;
-
 `;
 
 export const InputField = styled(Field)`
@@ -49,6 +48,10 @@ export const ErrMessage = styled(ErrorMessage)`
   display: block;
 `;
 export const SaveBtn = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   cursor: pointer;
   padding: 8px 30px;
   border-radius: 10px;
