@@ -12,6 +12,9 @@ function App() {
 
   console.dir(tg);
   useEffect(() => {
+    tg.ready();
+  }, []);
+  useEffect(() => {
     const fn = async () => {
       const res = await sendGuess(count, tg);
     };
