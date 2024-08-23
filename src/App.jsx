@@ -30,6 +30,7 @@ function App() {
           gameId: tg.initDataUnsafe.user.id,
         });
         setMessage(res.message);
+        alert(res.message);
       } catch (error) {
         console.log(error);
       }
