@@ -7,5 +7,5 @@ export default defineConfig({
     extensions: [".jsx", ".json", ".css", ".js"],
   },
   plugins: [react()],
-  base: "/tg-test/",
+  base: "/tg-bot/",
 });
