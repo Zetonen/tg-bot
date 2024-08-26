@@ -2,7 +2,7 @@ import axios from "axios";
 
 // console.log(import.meta.env.VITE_API_URL);
 axios.defaults.baseURL =
-  "https://562e-46-164-129-202.ngrok-free.app";
+  "https://137c-46-211-114-71.ngrok-free.app";
 
 export const sendGuess = async (data) => {
   const response = await axios.post("/guess", data);
